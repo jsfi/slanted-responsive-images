@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .img-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .img-svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .img-svg + .img,
+        .img-svg + .bg-img {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .bg-img-container {
+            max-width: 1280px;
+            position: relative;
+        }
+
+        .bg-img {
+            height: 321px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container">
+        <img class="img" id="img" src="img/dresden.jpg" alt="Dresden" />
+    </div>
+    <div class="img-container">
+        <img class="img" id="img-srcset" src="img/dresden-1280.jpg" srcset="img/dresden-320.jpg 320w, img/dresden-640.jpg 640w, img/dresden-800.jpg 800w, img/dresden-1024.jpg 1024w, img/dresden-1280.jpg 1280w, img/dresden-2560.jpg 2560w, img/dresden-5120.jpg 5120w" alt="Dresden" />
+    </div>
+    <div class="bg-img-container">
+        <div class="bg-img" id="bg-img" style="background-image:url(img/dresden.jpg)" ></div>
+    </div>
+    <div class="bg-img-container">
+        <div class="bg-img" id="bg-img-color" style="background-color:red" ></div>
+    </div>
+    <div class="bg-img-container">
+        <svg height="0" width="0">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <div class="bg-img" id="bg-img-gradient" style="background-color:red" ></div>
+    </div>
+    <p>
+        Dresden Image from <a href="https://commons.wikimedia.org/wiki/File:Dresden_from_Albertbr%C3%BCcke.jpg">wikimedia</a> by <a href="http://www.flickr.com/people/32366606@N00">Jiuguang Wang</a>
+    </p>
+    <script src="../build/slanted-responsive-images.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            var imgs = [document.getElementById('img'), document.getElementById('img-srcset'), document.getElementById('bg-img')];
+
+            var svgs = imgs.map(slanted.init);
+
+            var color = document.getElementById('bg-img-color');
+            var colorOptions = { fill: true, image: false };
+            var colorSvg = slanted.init(color, colorOptions);
+
+            var gradient = document.getElementById('bg-img-gradient');
+            var gradientOptions = { fill: 'url(#grad1)', image: false };
+            var gradientSvg = slanted.init(gradient, gradientOptions);
+
+            window.addEventListener('resize', function() {
+                svgs.map(slanted.resize);
+                slanted.resize(gradient, gradientOptions);
+                slanted.resize(color, colorOptions);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "name": "slanted-responsive-images",
+  "description": "Create images that are responsive with arbitrary top and/or bottom slants.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jsfi/slanted-responsive-images#readme",
+  "author": {
+    "name": "Martin Sachse",
+    "email": "martin.sachse@gmail.com",
+    "url": "http://jsfi.io"
+  },
+  "main": "dist/slanted-responsive-images.js",
+  "scripts": {
+    "test": "node node_modules/eslint/bin/eslint.js **/*.js",
+    "build": "grunt babel",
+    "dist": "grunt uglify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsfi/slanted-responsive-images.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsfi/slanted-responsive-images/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "responsive",
+    "image",
+    "arbitrary",
+    "slants"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "eslint": "^1.10.2",
+    "grunt": "^0.4.5",
+    "grunt-babel": "^6.0.0",
+    "grunt-contrib-uglify": "^0.11.0"
+  }
+}
