@@ -71,6 +71,16 @@
     </p>
     <script src="../build/slanted-responsive-images.js"></script>
     <script>
+        if (!Array.from) {
+            console.log(1);
+            document.write('<script src="js/array.from.js"><\/script>');
+        }
+
+        if (!Object.assign) {
+            console.log(2);
+            document.write('<script src="js/object.assign.js"><\/script>');
+        }
+
         window.addEventListener('load', function() {
             var imgs = [document.getElementById('img'), document.getElementById('img-srcset'), document.getElementById('bg-img')];
 

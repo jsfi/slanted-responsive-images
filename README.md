@@ -162,7 +162,11 @@ This option defines the class that is added to the SVG-element
 | Chrome | ≥ 47 | ✓ |
 | Firefox | ≥ 41 | ✓ |
 | Safari | ≥ 9 | ✓ |
-| IE | ≥ 9 | ? |
+| IE | Edge | ✓ |
+| IE | 11 | ✓* |
+| IE | <11 | ? |
+
+* Array.from and Object.asign have to be polyfilled
 
 ### jQuery Plugin for easier usage
 
